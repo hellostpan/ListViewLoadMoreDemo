@@ -50,7 +50,7 @@ public class ListViewAdapter extends BaseAdapter {
             myHolder = (MyHolder) convertView.getTag();
         }
         myHolder.textView.setText(list.get(position));
-        return null;
+        return convertView;
     }
 
     private class MyHolder{

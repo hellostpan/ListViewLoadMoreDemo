@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements MyListView.IOnLoa
     }
 
     private void initData(){
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             list.add("hello stpan "+i);
         }
         adapter = new ListViewAdapter(list,this);
@@ -34,20 +34,14 @@ public class MainActivity extends AppCompatActivity implements MyListView.IOnLoa
     }
     @Override
     public void loadingMore() {
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                for (int i = 10; i < 20; i++) {
-                    list.add("hello stpan more "+i);
-                }
-                adapter.notifyDataSetChanged();
-                listView.loadingComplete();
-                if (list.size()>30){
-                    listView.setIsEnd(true);
-                }
-            }
-        }, 2000);
+        int length = list.size();
+        for (int i = length; i < length+20; i++) {
+            list.add("hello stpan  "+i);
+        }
+        adapter.notifyDataSetChanged();
+        listView.loadingComplete();
+        if (list.size()>100){
+            listView.setIsEnd(true);
+        }
     }
 }
